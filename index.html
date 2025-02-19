@@ -42,7 +42,7 @@
             cursor: pointer;
             font-size: 24px;
             color: #fff;
-            transition: color 0.3s ease; /* 添加颜色变化动画 */
+            transition: color 0.3s ease;
         }
         .menu-toggle:hover {
             color: #ffcc00;
@@ -52,7 +52,8 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            transition: transform 0.3s ease; /* 添加菜单展开动画 */
+            transform: translateY(-100%);
+            transition: transform 0.3s ease;
         }
         .nav-links li {
             margin: 0 10px;
@@ -89,17 +90,15 @@
             width: 100%;
             bottom: 0;
         }
-        /* 响应式设计 */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
             }
             .nav-links {
-                display: none;
+                display: block;
                 flex-direction: column;
                 width: 100%;
                 text-align: center;
-                transform: translateY(-100%); /* 初始隐藏菜单 */
             }
             .nav-links li {
                 margin: 10px 0;
@@ -144,15 +143,41 @@
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            if (navLinks.style.display === 'none') {
-                navLinks.style.display = 'block';
-                navLinks.style.transform = 'translateY(0)'; // 展开菜单
-            } else {
-                navLinks.style.transform = 'translateY(-100%)'; // 收起菜单
-                setTimeout(() => {
+            if (navLinks.style.transform === 'translateY(0)') {
+                animateMenu(navLinks, 'translateY(-100%)', () => {
                     navLinks.style.display = 'none';
-                }, 300); // 等待动画完成后再隐藏
+                });
+            } else {
+                navLinks.style.display = 'block';
+                animateMenu(navLinks, 'translateY(0)');
             }
+        }
+
+        function animateMenu(element, to, callback) {
+            let start = null;
+            const from = element.style.transform || "translateY(-100%)";
+            const duration = 300;
+
+            function step(timestamp) {
+                if (!start) start = timestamp;
+                const progress = timestamp - start;
+                const fraction = Math.min(progress / duration, 1);
+
+                const fromValue = parseFloat(from.split("(")[1].split(")")[0]);
+                const toValue = parseFloat(to.split("(")[1].split(")")[0]);
+                const currentValue = fromValue + fraction * (toValue - fromValue);
+
+                element.style.transform = `translateY(${currentValue}px)`;
+
+                if (progress < duration) {
+                    requestAnimationFrame(step);
+                } else {
+                    element.style.transform = to;
+                    if (callback) callback();
+                }
+            }
+
+            requestAnimationFrame(step);
         }
     </script>
 </body>
