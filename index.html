@@ -1,0 +1,93 @@
+<!DOCTYPE html> <!-- 声明文档类型为HTML5，确保浏览器正确解析页面 -->
+<html lang="en"> <!-- 设置网页的语言为英语 -->
+<head>
+    <meta charset="UTF-8"> <!-- 设置字符编码为UTF-8，支持多种语言 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- 适配移动设备，使网页在不同设备上显示正常 -->
+    <title>网页标题</title> <!-- 设置网页的标题，显示在浏览器标签页上 -->
+
+    <!-- 内嵌CSS样式 -->
+    <style>
+        /* 设置网页的整体样式 */
+        body {
+            font-family: Arial, sans-serif; /* 设置字体为Arial，如果没有则使用系统默认的无衬线字体 */
+            margin: 0; /* 去掉默认的外边距 */
+            padding: 0; /* 去掉默认的内边距 */
+            background-color: #f4f4f4; /* 设置背景颜色为淡灰色 */
+        }
+
+        /* 设置头部样式 */
+        header {
+            background-color: #333; /* 深灰色背景 */
+            color: #fff; /* 文字颜色为白色 */
+            padding: 10px 20px; /* 上下内边距为10px，左右内边距为20px */
+            text-align: center; /* 文字居中对齐 */
+        }
+
+        /* 设置导航栏样式 */
+        nav {
+            display: flex; /* 使用弹性布局，使导航项水平排列 */
+            justify-content: center; /* 使导航项居中对齐 */
+            background-color: #444; /* 深灰色背景 */
+            padding: 10px 0; /* 上下内边距为10px */
+        }
+        nav a {
+            color: #fff; /* 导航链接颜色为白色 */
+            text-decoration: none; /* 去掉下划线 */
+            margin: 0 15px; /* 每个链接之间有15px的间隔 */
+            font-size: 16px; /* 字体大小为16px */
+        }
+        nav a:hover {
+            text-decoration: underline; /* 鼠标悬停时显示下划线 */
+        }
+
+        /* 设置主体内容样式 */
+        main {
+            padding: 20px; /* 主体内容的内边距为20px */
+        }
+
+        /* 设置页脚样式 */
+        footer {
+            background-color: #333; /* 深灰色背景 */
+            color: #fff; /* 文字颜色为白色 */
+            text-align: center; /* 文字居中对齐 */
+            padding: 10px 0; /* 上下内边距为10px */
+            position: fixed; /* 固定在页面底部 */
+            width: 100%; /* 宽度为100% */
+            bottom: 0; /* 底部对齐 */
+        }
+    </style>
+</head>
+<body>
+    <!-- 页面头部 -->
+    <header>
+        <h1>我的网页</h1> <!-- 页面标题 -->
+    </header>
+
+    <!-- 导航栏 -->
+    <nav>
+        <a href="#home">首页</a> <!-- 首页链接 -->
+        <a href="#about">关于</a> <!-- 关于页面链接 -->
+        <a href="#contact">联系</a> <!-- 联系页面链接 -->
+    </nav>
+
+    <!-- 主体内容 -->
+    <main>
+        <h2>欢迎来到我的网页</h2> <!-- 主标题 -->
+        <p>这是一个简单的网页模板，你可以根据需要进行修改和扩展。</p> <!-- 段落内容 -->
+        <button id="myButton">点击我</button> <!-- 按钮 -->
+    </main>
+
+    <!-- 页脚 -->
+    <footer>
+        <p>&copy; 2025 我的网页</p> <!-- 版权信息 -->
+    </footer>
+
+    <!-- 内嵌JavaScript脚本 -->
+    <script>
+        // 为按钮添加点击事件监听器
+        document.getElementById("myButton").addEventListener("click", function() {
+            alert("按钮被点击了！"); // 点击按钮时弹出提示框
+        });
+    </script>
+</body>
+</html>
