@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>面包服网站 - 首页</title>
+    <title>面包服 - 高性能服务器展示与购买</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -31,45 +31,46 @@
         }
         nav a {
             color: #fff;
-             text-decoration: none;
-             margin: 0 10px;
-             font-size: 16px;
+            text-decoration: none;
+            margin: 0 10px;
+            font-size: 16px;
         }
         nav a:hover {
-             text-decoration: underline;
+            text-decoration: underline;
         }
         .menu-toggle {
-             display: block; /* 默认在所有设备上显示 */
-             cursor: pointer;
-             font-size: 24px;
-             color: #fff;
+            display: block; /* 默认在所有设备上显示 */
+            cursor: pointer;
+            font-size: 24px;
+            color: #fff;
         }
         .nav-links {
-             list-style: none;
-             padding: 0;
-             margin: 0;
-             display: none; /* 默认不显示 */
-             flex-direction: column;
-             position: fixed;
-             top: 0;
-             left: 0;
-             width: 200px; /* 侧边栏宽度 */
-             height: 100%;
-             background: rgba(0, 0, 0, 0.8);
-             transform: translateX(-100%);
-             transition: transform 0.3s ease;
-             z-index: 1000;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: none; /* 默认不显示 */
+            flex-direction: column;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 80%; /* 侧边栏宽度 */
+            max-width: 200px; /* 最大宽度限制 */
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
         }
         .nav-links li {
-             padding: 10px;
+            padding: 10px;
         }
         .nav-links a {
-             color: #fff;
-             text-decoration: none;
-             display: block;
+            color: #fff;
+            text-decoration: none;
+            display: block;
         }
         .nav-links a:hover {
-             text-decoration: underline;
+            text-decoration: underline;
         }
         main {
             padding: 20px;
@@ -105,55 +106,55 @@
             bottom: 0;
         }
         @media (min-width: 768px) {
-             .menu-toggle {
-                 display: none; /* 桌面端隐藏汉堡菜单按钮 */
-             }
-             .nav-links {
-                 position: relative;
-                 display: flex;
-                 transform: none;
-                 width: auto;
-                 height: auto;
-                 background: none;
-                 flex-direction: row; /* 桌面端水平排列 */
-                 margin-left: 200px; /* 为侧边栏留出空间 */
-             }
-             .nav-links li {
-                 padding: 0 10px; /* 调整桌面端的间距 */
-             }
-             main {
-                 margin-left: 200px; /* 桌面端为侧边栏留出空间 */
-             }
+            .menu-toggle {
+                display: none; /* 桌面端隐藏汉堡菜单按钮 */
+            }
+            .nav-links {
+                position: relative;
+                display: flex;
+                transform: none;
+                width: auto;
+                height: auto;
+                background: none;
+                flex-direction: row; /* 桌面端水平排列 */
+                margin-left: 200px; /* 为侧边栏留出空间 */
+            }
+            .nav-links li {
+                padding: 0 10px; /* 调整桌面端的间距 */
+            }
+            main {
+                margin-left: 200px; /* 桌面端为侧边栏留出空间 */
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>面包服</h1>
+        <nav>
+            <div class="menu-toggle" onclick="toggleMenu()" aria-label="打开导航菜单">&#9776;</div>
+            <ul class="nav-links">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="about.html">关于</a></li>
+                <li><a href="feedback.html">反馈</a></li>
+                <li><a href="contact.html">联系</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <div class="menu-toggle" onclick="toggleMenu()">&#9776;</div>
-        <ul class="nav-links">
-            <li><a href="index.html">首页</a></li>
-            <li><a href="about.html">关于</a></li>
-            <li><a href="feedback.html">反馈</a></li>
-            <li><a href="contact.html">联系</a></li>
-        </ul>
-    </nav>
     <main>
         <h2>欢迎来到面包服</h2>
         <p>功能正在开发中。如果有任何建议，请点击上方的“反馈”链接告诉我们！</p>
         <div class="image-container">
             <div class="image-item">
-                <img src="picture/picture-01.png" alt="服务器展示-1">
+                <img src="picture/picture-01.png" alt="面包服服务器展示图1 - 高性能服务器">
                 <p>服务器展示-1</p>
             </div>
             <div class="image-item">
-                <img src="picture/picture-02.png" alt="服务器展示-2">
+                <img src="picture/picture-02.png" alt="面包服服务器展示图2 - 高可靠性服务器">
                 <p>服务器展示-2</p>
             </div>
             <div class="image-item">
-                <img src="picture/picture-03.png" alt="服务器展示-3">
+                <img src="picture/picture-03.png" alt="面包服服务器展示图3 - 高扩展性服务器">
                 <p>服务器展示-3</p>
             </div>
         </div>
@@ -164,8 +165,17 @@
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-             navLinks.style.transform = navLinks.style.transform === 'translateX(0)' ? 'translateX(-100%)' : 'translateX(0)';
+            navLinks.style.transform = navLinks.style.transform === 'translateX(0)' ? 'translateX(-100%)' : 'translateX(0)';
         }
+
+        // 点击外部区域关闭侧边栏
+        document.addEventListener('click', function(event) {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
+            if (!navLinks.contains(event.target) && !menuToggle.contains(event.target)) {
+                navLinks.style.transform = 'translateX(-100%)';
+            }
+        });
     </script>
 </body>
 </html>
