@@ -14,104 +14,97 @@
             background-position: center;
             background-repeat: no-repeat;
             background-attachment: fixed;
-            overflow-x: hidden; /* 确保在移动设备上没有水平滚动条 */
-         }
-         header {
-             background-color: rgba(51, 51, 51, 0.8);
-             color: #fff;
-             padding: 10px 20px;
-             text-align: center;
-         }
-         nav {
-             display: flex;
-             justify-content: space-between;
-             align-items: center;
-             background-color: rgba(68, 68, 68, 0.8);
-             padding: 10px 20px;
-             position: relative;
-         }
-         nav a {
-             color: #fff;
+            overflow-x: hidden; /* 防止侧边栏导致页面水平滚动 */
+        }
+        header {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            padding: 10px 20px;
+            text-align: center;
+        }
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: rgba(68, 68, 68, 0.8);
+            padding: 10px 20px;
+        }
+        nav a {
+            color: #fff;
              text-decoration: none;
              margin: 0 10px;
              font-size: 16px;
-         }
-         nav a:hover {
+        }
+        nav a:hover {
              text-decoration: underline;
-         }
-         .menu-toggle {
-             display: block; /* 默认在所有设备上显示 */
+        }
+        .menu-toggle {
+             display: none;
              cursor: pointer;
              font-size: 24px;
              color: #fff;
-             margin: 0 10px;
-             transition: color 0.3s ease;
-         }
-         .menu-toggle:hover {
-             color: #ffcc00;
-         }
-         .nav-links {
+        }
+        .nav-links {
              list-style: none;
              padding: 0;
              margin: 0;
-             display: none; /* 默认不显示 */
+             display: flex;
              flex-direction: column;
              position: fixed;
              top: 0;
              left: 0;
              width: 200px; /* 侧边栏宽度 */
              height: 100%;
-             background: rgba(0, 0, 0, 0.8);
+             background: rgba(0, 0, 0, 0, 0.8);
              transform: translateX(-100%);
-             transition: transform 0.3s ease-in-out;
+             transition: transform 0.3s ease;
              z-index: 1000;
-             overflow-y: auto; /* 添加滚动条 */
-         }
-         .nav-links li {
+        }
+        .nav-links li {
              padding: 10px;
-         }
-         .nav-links a {
+        }
+        .nav-links a {
              color: #fff;
              text-decoration: none;
              display: block;
-         }
-         .nav-links a:hover {
+        }
+        .nav-links a:hover {
              text-decoration: underline;
-         }
-         main {
-             padding: 20px;
-             background-color: rgba(255, 255, 255, 0.8);
-             border-radius: 10px;
-             margin: 20px;
-             backdrop-filter: blur(10px);
-             -webkit-backdrop-filter: blur(10px);
-             margin-left: 200px; /* 为侧边栏留出空间 */
-         }
-         .image-container {
-             display: flex;
-             justify-content: center;
-             gap: 20px;
-             flex-wrap: wrap;
-         }
-         .image-item {
-             text-align: center;
-         }
-         .image-item img {
-             max-width: 100%;
-             height: auto;
-             border-radius: 10px;
-             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-         }
-         footer {
-             background-color: rgba(51, 51, 51, 0.8);
-             color: #fff;
-             text-align: center;
-             padding: 10px 0;
-             position: fixed;
-             width: 100%;
-             bottom: 0;
-         }
-         @media (min-width: 768px) {
+        }
+        main {
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            margin: 20px;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            margin-left: 0; /* 默认不预留空间 */
+        }
+        .image-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+        .image-item {
+            text-align: center;
+        }
+        .image-item img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        footer {
+            background-color: rgba(51, 51, 51, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+        @media (min-width: 768px) {
              .menu-toggle {
                  display: none; /* 桌面端隐藏汉堡菜单按钮 */
              }
@@ -129,9 +122,9 @@
                  padding: 0 10px; /* 调整桌面端的间距 */
              }
              main {
-                 margin-left: 0; /* 桌面端不需要为侧边栏留出空间 */
+                 margin-left: 200px; /* 桌面端为侧边栏留出空间 */
              }
-         }
+        }
     </style>
 </head>
 <body>
@@ -169,10 +162,17 @@
         <p>&copy; 2025 面包服网站. <a href="privacy.html">隐私政策</a> | <a href="terms.html">使用条款</a></p>
     </footer>
     <script>
+        let menuVisible = false;
+
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-             navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
-         }
+             if (menuVisible) {
+                 navLinks.style.transform = 'translateX(-100%)';
+             } else {
+                 navLinks.style.transform = 'translateX(0)';
+             }
+             menuVisible = !menuVisible;
+        }
     </script>
 </body>
 </html>
