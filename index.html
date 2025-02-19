@@ -45,6 +45,10 @@
              font-size: 24px;
              color: #fff;
              margin: 0 10px;
+             transition: color 0.3s ease;
+         }
+         .menu-toggle:hover {
+             color: #ffcc00;
          }
          .nav-links {
              list-style: none;
@@ -76,11 +80,12 @@
          }
          main {
              padding: 20px;
-             background-color: rgba(255, 255, 255, 255, 0.8);
+             background-color: rgba(255, 255, 255, 0.8);
              border-radius: 10px;
              margin: 20px;
              backdrop-filter: blur(10px);
              -webkit-backdrop-filter: blur(10px);
+             margin-left: 200px; /* 为侧边栏留出空间 */
          }
          .image-container {
              display: flex;
@@ -118,9 +123,13 @@
                  height: auto;
                  background: none;
                  flex-direction: row; /* 桌面端水平排列 */
+                 margin-left: 200px; /* 为侧边栏留出空间 */
              }
              .nav-links li {
                  padding: 0 10px; /* 调整桌面端的间距 */
+             }
+             main {
+                 margin-left: 0; /* 桌面端不需要为侧边栏留出空间 */
              }
          }
     </style>
@@ -162,8 +171,8 @@
     <script>
         function toggleMenu() {
             const navLinks = document.querySelector('.nav-links');
-            navLinks.style.transform = navLinks.style.transform === 'translateX(0)' ? 'translateX(-100%)' : 'translateX(0)';
-        }
+             navLinks.style.display = navLinks.style.display === 'block' ? 'none' : 'block';
+         }
     </script>
 </body>
 </html>
