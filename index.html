@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>面包服网站 - 首页</title>
     <style>
+        /* CSS样式保持不变 */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -81,8 +82,15 @@
     </nav>
     <main>
         <h2>欢迎来到面包服</h2>
-        <p>功能正在开发中。</p>
-        <button id="myButton">立即反馈</button>
+        <p>功能正在开发中。如果有任何建议，请随时反馈给我们！</p>
+        
+        <!-- 表单区域 -->
+        <form action="https://formspree.io/f/mkgokbbk" method="POST" enctype="application/x-www-form-urlencoded">
+            <label for="feedback">你的建议：</label><br>
+            <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="请输入你的建议..."></textarea><br>
+            <button type="submit">提交反馈</button>
+        </form>
+        
         <div class="image-container">
             <div class="image-item">
                 <img src="picture/picture-01.png" alt="服务器展示-1">
@@ -92,20 +100,14 @@
                 <img src="picture/picture-02.png" alt="服务器展示-2">
                 <p>服务器展示-2</p>
             </div>
-														<div class="image-item">
-																			<img src="picture/picture-03.png" alt="服务器展示-3">
-																			<p>服务器展示-3</p>
+            <div class="image-item">
+                <img src="picture/picture-03.png" alt="服务器展示-3">
+                <p>服务器展示-3</p>
+            </div>
         </div>
     </main>
     <footer>
         <p>&copy; 2025 面包服网站</p>
     </footer>
-    <script>
-        let clickCount = 0;
-        document.getElementById("myButton").addEventListener("click", function() {
-            clickCount++;
-            alert(`在做了在做了 o(╥﹏╥)o 已经催了 ${clickCount} 次了！`);
-        });
-    </script>
 </body>
 </html>
