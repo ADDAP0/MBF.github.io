@@ -3,6 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="面包服网站，提供服务器展示和反馈功能。">
+    <meta name="keywords" content="面包服, 服务器, 反馈">
     <title>面包服网站 - 反馈</title>
     <style>
         body {
@@ -33,7 +35,9 @@
         }
         textarea {
             width: 100%;
-            height: 100px;
+            min-height: 100px;
+            max-height: 200px;
+            resize: vertical;
             margin-bottom: 10px;
         }
         button {
@@ -56,6 +60,11 @@
             width: 100%;
             bottom: 0;
         }
+        #loadingIndicator {
+            display: none;
+            margin-top: 10px;
+            color: #333;
+        }
     </style>
 </head>
 <body>
@@ -65,10 +74,11 @@
     <main>
         <h2>我们欢迎你的反馈！</h2>
         <p>如果有任何建议或问题，请随时告诉我们。</p>
-        <form id="feedbackForm" action="https://formspree.io/f/mkgokbbk" method="POST" enctype="application/x-www-form-urlencoded">
+        <form id="feedbackForm" action="https://formspree.io/f/mkgokbbk" method="POST">
             <label for="feedback">你的建议：</label>
             <textarea id="feedback" name="feedback" rows="4" cols="50" placeholder="请输入你的建议..." required></textarea>
-            <button type="submit">提交反馈</button>
+            <button type="submit" id="submitButton">提交反馈</button>
+            <div id="loadingIndicator">提交中...</div>
         </form>
         <div id="feedbackMessage" style="margin-top: 20px; color: green; display: none;">
             感谢你的反馈！我们会尽快处理。
@@ -81,14 +91,19 @@
         document.getElementById("feedbackForm").addEventListener("submit", function(event) {
             event.preventDefault();
             const form = this;
+            const submitButton = document.getElementById("submitButton");
+            const loadingIndicator = document.getElementById("loadingIndicator");
+
+            submitButton.style.display = "none";
+            loadingIndicator.style.display = "block";
+
             fetch(form.action, {
                 method: form.method,
                 headers: { "Content-Type": "application/x-www-form-urlencoded" },
                 body: new URLSearchParams(new FormData(form)).toString()
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data.ok) {
+            .then(response => {
+                if (response.ok) {
                     document.getElementById("feedbackMessage").style.display = "block";
                     form.reset();
                 } else {
@@ -98,6 +113,10 @@
             .catch(error => {
                 console.error("Error:", error);
                 alert("提交失败，请稍后再试！");
+            })
+            .finally(() => {
+                submitButton.style.display = "block";
+                loadingIndicator.style.display = "none";
             });
         });
     </script>
